@@ -16,7 +16,8 @@ $GLOBALS['config'] = array(
     'session'   => array(
         'session_name'  => 'user',
         'token_name' => 'token'
-    )
+    ),
+    'development' => 'true'
 );
 
 
@@ -26,3 +27,10 @@ function autoload($class)
 }
 
 spl_autoload_register('autoload');
+
+
+if (Config::get('development')) {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+}

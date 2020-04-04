@@ -1,6 +1,5 @@
 <?php
 
-include '../init.php';
 
 class DB
 {
@@ -94,6 +93,22 @@ class DB
     {
         return $this->action('SELECT *', $table, $where);
     }
+
+    /**
+     * get result from table
+     *
+     * @param String $table
+     * @param Array $where
+     * @return void
+     */
+    public function paginate($table, $limit)
+    {
+        $sql = "SELECT * FROM {$table} LIMIT $limit";
+        if (!$this->query($sql)->error()) {
+            return $this;
+        }
+    }
+
     /**
      * delete row from table
      *
