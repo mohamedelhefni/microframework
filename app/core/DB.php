@@ -171,7 +171,7 @@ class DB
                 }
                 $x++;
             }
-            $sql = "UPDATE {$table} SET $set WHERE user_id = {$id}"; // change it later to id :D
+            $sql = "UPDATE {$table} SET $set WHERE id = {$id}"; // change it later to id :D
             if (!$this->query($sql, $fields)->error()) {
                 return true;
             }

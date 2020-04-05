@@ -1,6 +1,6 @@
 <?php
 
-class Validator
+class Validate
 {
     private $_passed = false,
         $_errors = array(),
@@ -18,13 +18,17 @@ class Validator
      * @param array $items
      * @return void
      */
-    public static function check($source, $items = array())
+    public  function check($source, $items = array())
     {
         foreach ($items as $item => $rules) {
             foreach ($rules as $rule => $rule_value) {
                 $value = trim($source[$item]);
                 if ($rule === 'required' && empty($value)) {
                     $this->addError("$item Is Required");
+                } else if ($rule === 'email') {
+                    if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                        $this->addError("please enter valid email");
+                    }
                 } else if (!empty($value)) {
                     switch ($rule):
                         case 'min':
@@ -42,6 +46,7 @@ class Validator
                                 $this->addError("$rule_value Must Match $item");
                             }
                             break;
+
                         case 'unique':
                             $check = $this->_db->get($rule_value, array($item, '=', $value));
                             if ($check->count()) {

@@ -12,7 +12,7 @@ class users extends Controller
     public function index($name = '')
     {
         echo "<PRE>";
-        print_r($this->user->getUsers());
+        print_r($this->user->find(2));
         echo "</PRE>";
     }
 }

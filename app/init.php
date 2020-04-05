@@ -7,7 +7,7 @@ $GLOBALS['config'] = array(
         'host'  => 'localhost',
         'user'  => 'root',
         'pass'  => '',
-        'db'    => 'mychat'
+        'db'    => 'lr'
     ),
     'remember'  => array(
         'cookie_name' => 'hash',

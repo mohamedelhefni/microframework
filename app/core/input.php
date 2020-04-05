@@ -9,7 +9,7 @@ class input
      * @param string $type
      * @return void
      */
-    public function exists($type = 'post')
+    public static function exists($type = 'post')
     {
         switch ($type) {
             case 'post':
